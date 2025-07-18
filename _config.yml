@@ -1,5 +1,6 @@
 title: NexaSQL Blog
-description: Updates, tutorials, and insights from NexaSQL.
-baseurl: "" # Leave blank for root
+description: Insights, updates, and tutorials from NexaSQL.
+baseurl: ""
 url: "https://blog.nexasql.com"
-theme: minima # Or custom theme
+theme: null
+permalink: /:title/
