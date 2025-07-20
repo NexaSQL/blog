@@ -36,7 +36,7 @@ function renderPostCard(post) {
         By <strong>${post.author}</strong> | ${dateFormatted} | ${post.readTime}
       </div>
       <p class="post-excerpt">${post.excerpt}</p>
-      ${tagsHTML}
+      <div class="post-tags">${tagsHTML}</div>
     </div>
   `;
 }
