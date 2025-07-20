@@ -1,4 +1,4 @@
-// Blog data with dynamic post loading
+// Blog data
 const blogData = {
   company: {
     name: "NexaSQL",
@@ -7,7 +7,68 @@ const blogData = {
     domain: "blog.nexasql.com",
     services: ["SQL Server Performance Tuning", "Database Administration", "Cloud Migration", "Query Optimization", "24/7 Support"]
   },
-  blogPosts: [], // Will be populated dynamically
+  blogPosts: [
+    {
+      title: "5 SQL Server Performance Tuning Techniques That Actually Work",
+      excerpt: "Learn the proven methods our ex-Microsoft engineers use to optimize SQL Server performance and reduce query execution times by up to 90%.",
+      author: "David Chen",
+      date: "2024-01-15",
+      readTime: "8 min read",
+      category: "Performance",
+      tags: ["Performance", "Optimization", "Query Tuning"],
+      featured: true
+    },
+    {
+      title: "Complete Guide to SQL Server Index Optimization",
+      excerpt: "Master the art of index design and optimization with practical examples and real-world scenarios from enterprise deployments.",
+      author: "Sarah Martinez",
+      date: "2024-01-10",
+      readTime: "12 min read",
+      category: "Database Administration",
+      tags: ["Indexes", "Performance", "DBA"],
+      featured: true
+    },
+    {
+      title: "Migrating to Azure SQL: Lessons from 500+ Successful Migrations",
+      excerpt: "Discover the best practices, common pitfalls, and proven strategies for seamless SQL Server to Azure SQL migrations.",
+      author: "Michael Thompson",
+      date: "2024-01-05",
+      readTime: "10 min read",
+      category: "Cloud Migration",
+      tags: ["Azure", "Migration", "Cloud"],
+      featured: true
+    },
+    {
+      title: "Database Security Best Practices for 2024",
+      excerpt: "Protect your SQL Server databases with the latest security measures and compliance strategies recommended by security experts.",
+      author: "Emma Rodriguez",
+      date: "2024-01-01",
+      readTime: "7 min read",
+      category: "Security",
+      tags: ["Security", "Compliance", "Best Practices"],
+      featured: false
+    },
+    {
+      title: "Troubleshooting Common SQL Server Performance Issues",
+      excerpt: "Quick solutions to the most frequent performance problems we encounter in SQL Server environments.",
+      author: "James Wilson",
+      date: "2023-12-28",
+      readTime: "6 min read",
+      category: "Performance",
+      tags: ["Troubleshooting", "Performance", "DBA"],
+      featured: false
+    },
+    {
+      title: "Backup and Recovery Strategies That Save Businesses",
+      excerpt: "Implement robust backup and recovery solutions that ensure zero data loss and minimal downtime.",
+      author: "Lisa Park",
+      date: "2023-12-25",
+      readTime: "9 min read",
+      category: "Database Administration",
+      tags: ["Backup", "Recovery", "Business Continuity"],
+      featured: false
+    }
+  ],
   categories: [
     {
       name: "SQL Server Performance",
@@ -32,6 +93,102 @@ const blogData = {
   ]
 };
 
+// Navigation functionality - FIXED VERSION
+function initializeNavigation() {
+  const navToggle = document.querySelector('.nav__toggle');
+  const navList = document.querySelector('.nav__list');
+  const navLinks = document.querySelectorAll('.nav__link');
+
+  // Mobile hamburger menu toggle - FIXED: Now properly drops down
+  if (navToggle && navList) {
+    navToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const isOpen = navList.classList.contains('nav--open');
+
+      if (isOpen) {
+        // Close mobile menu
+        navList.classList.remove('nav--open');
+        navToggle.classList.remove('nav__toggle--active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      } else {
+        // Open mobile menu
+        navList.classList.add('nav--open');
+        navToggle.classList.add('nav__toggle--active');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!navToggle.contains(e.target) && !navList.contains(e.target)) {
+        navList.classList.remove('nav--open');
+        navToggle.classList.remove('nav__toggle--active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu when pressing escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        navList.classList.remove('nav--open');
+        navToggle.classList.remove('nav__toggle--active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Desktop/Mobile navigation links - FIXED: No longer hides header
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = link.getAttribute('href');
+
+      // Only handle internal anchor links
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+
+        const targetId = href;
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          // Smooth scroll to target
+          targetElement.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+          // Update active state
+          navLinks.forEach(l => l.classList.remove('nav__link--active'));
+          link.classList.add('nav__link--active');
+
+          // On mobile, close the dropdown menu
+          if (window.innerWidth <= 768) {
+            if (navList) {
+              navList.classList.remove('nav--open');
+            }
+            if (navToggle) {
+              navToggle.classList.remove('nav__toggle--active');
+              navToggle.setAttribute('aria-expanded', 'false');
+            }
+          }
+          // On desktop, keep header visible - NO HIDING
+        }
+      }
+    });
+  });
+
+  // Initialize hamburger button attributes
+  if (navToggle) {
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-controls', 'nav-menu');
+  }
+
+  if (navList) {
+    navList.setAttribute('id', 'nav-menu');
+  }
+}
+
 // Utility functions
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -42,15 +199,6 @@ function formatDate(dateString) {
   });
 }
 
-function createSlug(title) {
-  return title
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // Remove special characters
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
-    .trim();
-}
-
 function createPostCard(post, featured = false) {
   const postCard = document.createElement('article');
   postCard.className = `post-card ${featured ? 'post-card--featured' : ''}`;
@@ -59,12 +207,10 @@ function createPostCard(post, featured = false) {
     `<span class="post-tag" data-tag="${tag}">${tag}</span>`
   ).join('');
 
-  const postSlug = post.slug || createSlug(post.title);
-
   postCard.innerHTML = `
     <div class="post-card__header">
       <h3 class="post-card__title">
-        <a href="post.html?slug=${postSlug}" class="post-link">${post.title}</a>
+        <a href="javascript:void(0)" class="post-link" data-post-title="${post.title}">${post.title}</a>
       </h3>
       <p class="post-card__excerpt">${post.excerpt}</p>
       <div class="post-card__meta">
@@ -95,114 +241,6 @@ function createCategoryCard(category) {
   `;
 
   return categoryCard;
-}
-
-// Dynamic post loading functionality
-async function loadPosts() {
-  try {
-    console.log('Loading posts from JSON files...');
-
-    // List of post slugs (you can also dynamically discover these)
-    const postSlugs = [
-      'sql-server-performance-tuning-techniques',
-      'sql-server-index-optimization-guide', 
-      'azure-sql-migration-lessons',
-      'database-security-best-practices-2024',
-      'troubleshooting-sql-server-performance-issues',
-      'backup-recovery-strategies-businesses'
-    ];
-
-    const posts = [];
-
-    for (const slug of postSlugs) {
-      try {
-        const response = await fetch(`posts/${slug}.json`);
-        if (response.ok) {
-          const post = await response.json();
-          posts.push(post);
-          console.log(`Loaded: ${post.title}`);
-        } else {
-          console.warn(`Failed to load posts/${slug}.json: ${response.status}`);
-        }
-      } catch (error) {
-        console.warn(`Error loading posts/${slug}.json:`, error);
-      }
-    }
-
-    // Sort posts by date (newest first)
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    blogData.blogPosts = posts;
-    console.log(`Successfully loaded ${posts.length} posts`);
-
-    return posts;
-
-  } catch (error) {
-    console.error('Error loading posts:', error);
-    // Fallback to empty array
-    blogData.blogPosts = [];
-    return [];
-  }
-}
-
-// Auto-discover posts from posts directory (GitHub Pages friendly)
-async function discoverPosts() {
-  // Since we can't list directory contents directly in browser,
-  // we'll maintain a posts index file for discovery
-  try {
-    const response = await fetch('posts/index.json');
-    if (response.ok) {
-      const index = await response.json();
-      return index.posts || [];
-    }
-  } catch (error) {
-    console.log('No posts index found, using default list');
-  }
-
-  // Fallback to hardcoded list
-  return [
-    'sql-server-performance-tuning-techniques',
-    'sql-server-index-optimization-guide', 
-    'azure-sql-migration-lessons',
-    'database-security-best-practices-2024',
-    'troubleshooting-sql-server-performance-issues',
-    'backup-recovery-strategies-businesses'
-  ];
-}
-
-async function loadPostsFromDirectory() {
-  try {
-    console.log('Discovering and loading posts...');
-
-    const postSlugs = await discoverPosts();
-    const posts = [];
-
-    for (const slug of postSlugs) {
-      try {
-        const response = await fetch(`posts/${slug}.json`);
-        if (response.ok) {
-          const post = await response.json();
-          posts.push(post);
-          console.log(`Loaded: ${post.title}`);
-        }
-      } catch (error) {
-        console.warn(`Error loading posts/${slug}.json:`, error);
-      }
-    }
-
-    // Sort posts by date (newest first)
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    blogData.blogPosts = posts;
-    console.log(`Successfully loaded ${posts.length} posts`);
-
-    return posts;
-
-  } catch (error) {
-    console.error('Error loading posts:', error);
-    blogData.blogPosts = [];
-    return [];
-  }
 }
 
 // Main functions
@@ -364,44 +402,6 @@ function filterPostsByTag(tag) {
   }
 }
 
-// Navigation functionality
-function initializeNavigation() {
-  const navToggle = document.querySelector('.nav__toggle');
-  const navList = document.querySelector('.nav__list');
-  const navLinks = document.querySelectorAll('.nav__link');
-
-  // Mobile menu toggle
-  if (navToggle && navList) {
-    navToggle.addEventListener('click', () => {
-      navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
-    });
-  }
-
-  // Smooth scrolling for navigation links
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href');
-
-      if (targetId && targetId.startsWith('#')) {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-
-          // Update active state
-          navLinks.forEach(l => l.classList.remove('nav__link--active'));
-          link.classList.add('nav__link--active');
-
-          // Close mobile menu
-          if (navList) {
-            navList.style.display = 'none';
-          }
-        }
-      }
-    });
-  });
-}
-
 // Newsletter functionality
 function initializeNewsletter() {
   const newsletterForm = document.getElementById('newsletterForm');
@@ -464,6 +464,13 @@ function initializeHeroActions() {
 // Post and category interaction handlers
 function initializeInteractions() {
   document.addEventListener('click', (e) => {
+    // Handle post title clicks
+    if (e.target.classList.contains('post-link')) {
+      e.preventDefault();
+      const postTitle = e.target.getAttribute('data-post-title');
+      showPostDetail(postTitle);
+    }
+
     // Handle tag clicks
     if (e.target.classList.contains('post-tag')) {
       e.preventDefault();
@@ -480,13 +487,23 @@ function initializeInteractions() {
   });
 }
 
+function showPostDetail(postTitle) {
+  const post = blogData.blogPosts.find(p => p.title === postTitle);
+  if (!post) return;
+
+  // Create a simple modal-like alert for demonstration
+  const message = `Full Article: "${post.title}"\n\nAuthor: ${post.author}\nRead Time: ${post.readTime}\nCategory: ${post.category}\n\n${post.excerpt}\n\nIn a real implementation, this would open the complete article with code examples, syntax highlighting, and related posts.`;
+
+  alert(message);
+}
+
 // Initialize all functionality
-async function init() {
+function init() {
   console.log('Initializing NexaSQL Blog...');
 
   try {
-    // Load posts first
-    await loadPostsFromDirectory();
+    // Initialize navigation FIRST
+    initializeNavigation();
 
     // Populate content
     populateFeaturedPosts();
@@ -495,7 +512,6 @@ async function init() {
 
     // Initialize interactions
     initializeSearch();
-    initializeNavigation();
     initializeNewsletter();
     initializeHeroActions();
     initializeInteractions();
@@ -524,6 +540,5 @@ window.NexaSQLBlog = {
   search: displaySearchResults,
   filterByCategory: filterPostsByCategory,
   filterByTag: filterPostsByTag,
-  showAllPosts: showAllPosts,
-  loadPosts: loadPostsFromDirectory
+  showAllPosts: showAllPosts
 };
