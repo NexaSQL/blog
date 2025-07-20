@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loading...</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="postContainer" class="post-detail"></main>
+
+  <script src="app.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+
+    const post = NexaSQLBlog.data.blogPosts.find(p =>
+      p.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '') === slug
+    );
+
+    const container = document.getElementById("postContainer");
+
+    if (post && container) {
+      document.title = post.title;
+
+      container.innerHTML = `
+        <h1>${post.title}</h1>
+        <div class="post-meta">
+          <span>${post.author}</span> |
+          <span>${formatDate(post.date)}</span> |
+          <span>${post.readTime}</span>
+        </div>
+        <p class="post-excerpt">${post.excerpt}</p>
+        <p style="margin-top:2rem; color:#555;">Full article content coming soon...</p>
+      `;
+    } else {
+      container.innerHTML = `<p>Article not found.</p>`;
+    }
+  </script>
+</body>
+</html>
