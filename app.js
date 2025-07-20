@@ -41,3 +41,23 @@ function renderPostCard(post) {
   `;
 }
 
+fetch("categories.json")
+  .then(response => response.json())
+  .then(categories => {
+    const grid = document.getElementById("categoriesGrid");
+    if (!grid) return;
+
+    categories.forEach(cat => {
+      const box = document.createElement("div");
+      box.className = "category-box";
+
+      box.innerHTML = `
+        <h3 class="category-title">${cat.title}</h3>
+        <p class="category-desc">${cat.description}</p>
+        <p class="category-count">${cat.count} articles</p>
+      `;
+
+      grid.appendChild(box);
+    });
+  });
+
