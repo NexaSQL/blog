@@ -1470,7 +1470,7 @@ pre code {
     right: 0;               /* align to right edge (or use left:0 for left) */
     left: auto;
     width: 75vw;            /* or fixed width, like 240px */
-    max-width: 56px;       /* optional */
+    max-width: 112px;       /* optional */
     background: #222;
     flex-direction: column;
     align-items: flex-start;
