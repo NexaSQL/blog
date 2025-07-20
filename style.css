@@ -1462,24 +1462,3 @@ pre code {
 }
 /* --- END NAVIGATION FIXES --- */
 
-@media (max-width: 720px) {
-  .nav__menu {
-    position: fixed;
-    top: 0;
-    left: 0;                /* Anchor to left edge */
-    width: 220px;           /* Set drawer width */
-    height: 100vh;          /* Full height */
-    background: #222;       /* Or your menu color */
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 1001;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-    border-radius: 0 8px 8px 0;
-    display: flex;
-    flex-direction: column;
-    padding-top: 56px;      /* adjust so content is below header */
-  }
-  .nav__menu.open {
-    transform: translateX(0);
-  }
-}
