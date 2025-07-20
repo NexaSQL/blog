@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+
+
+
 function renderPostCard(post) {
   const dateFormatted = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -41,21 +45,31 @@ function renderPostCard(post) {
   `;
 }
 
-fetch("categories.json")
-  .then(response => response.json())
-  .then(categories => {
-    const grid = document.getElementById("categoriesGrid");
-    if (!grid) return;
+function createCategoryCard(category) {
+  const categoryCard = document.createElement('div');
+  categoryCard.className = 'category-card';
+  categoryCard.style.cursor = 'pointer';
+  categoryCard.innerHTML = `
+    <h3 class="category-card__name">${category.name}</h3>
+    <p class="category-card__description">${category.description}</p>
+    <span class="category-card__count">${category.count} articles</span>
+  `;
+  
+  return categoryCard;
+}
 
-    categories.forEach(cat => {
-      const box = document.createElement("div");
-      box.className = "category-box";
 
-      box.innerHTML = `
-        <h3 class="category-title">${cat.title}</h3>
-        <p class="category-desc">${cat.description}</p>
-        <p class="category-count">${cat.count} articles</p>
-      `;
+function populateCategories() {
+  const categoriesContainer = document.getElementById('categoriesGrid');
+  if (!categoriesContainer) return;
+  
+  categoriesContainer.innerHTML = '';
+  
+  blogData.categories.forEach(category => {
+    const categoryCard = createCategoryCard(category);
+    categoriesContainer.appendChild(categoryCard);
+  });
+}
 
       grid.appendChild(box);
     });
