@@ -1,0 +1,16 @@
+{
+  "title": "Complete Guide to SQL Server Index Optimization",
+  "slug": "sql-server-index-optimization-guide",
+  "excerpt": "Master the art of index design and optimization with practical examples and real-world scenarios from enterprise deployments.",
+  "author": "Sarah Martinez",
+  "date": "2024-01-10",
+  "readTime": "12 min read",
+  "category": "Database Administration",
+  "tags": [
+    "Indexes",
+    "Performance",
+    "DBA"
+  ],
+  "featured": true,
+  "content": "This is where the full article content would go..."
+}

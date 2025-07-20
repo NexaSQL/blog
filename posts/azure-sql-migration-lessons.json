@@ -1,0 +1,16 @@
+{
+  "title": "Migrating to Azure SQL: Lessons from 500+ Successful Migrations",
+  "slug": "azure-sql-migration-lessons",
+  "excerpt": "Discover the best practices, common pitfalls, and proven strategies for seamless SQL Server to Azure SQL migrations.",
+  "author": "Michael Thompson",
+  "date": "2024-01-05",
+  "readTime": "10 min read",
+  "category": "Cloud Migration",
+  "tags": [
+    "Azure",
+    "Migration",
+    "Cloud"
+  ],
+  "featured": true,
+  "content": "This is where the full article content would go..."
+}
