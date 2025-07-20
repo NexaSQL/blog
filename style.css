@@ -1377,3 +1377,55 @@ pre code {
   color: #757575;
   font-style: italic;
 }
+
+.post-card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.post-link {
+  text-decoration: none;
+  color: #005f73;
+}
+
+.post-link:hover {
+  text-decoration: underline;
+}
+
+.post-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.post-excerpt {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #007a87;
+  color: white;
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  margin-right: 6px;
+  margin-top: 6px;
+}
