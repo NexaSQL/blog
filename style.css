@@ -1465,34 +1465,17 @@ pre code {
 
 @media (max-width: 720px) {
   .nav__menu {
-    position: absolute;
-    top: 56px;          /* Adjust as needed so menu appears below the header */
-    right: 0;           /* Attach to right edge. Or change to 'left: 0;' to attach to the left */
-    left: auto;
-    width: 70vw;        /* Make menu 70% of the viewport width */
-    min-width: 200px;   /* Optional: ensure minimum usable space */
-    max-width: 320px;   /* Optional: prevent overly wide menus */
-    background: #222;   /* Or match your color */
+    position: absolute;   /* or fixed, if preferred */
+    top: 56px;            /* or align with your header/nav height */
+    right: auto;          /* REMOVE this if present */
+    left: 0;              /* Start from the far left edge */
+    width: 70vw;          /* Or set a fixed width (e.g., 220px) */
+    background: #222;
     z-index: 1200;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* So text aligns left inside the menu */
-    padding: 16px 0;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    border-radius: 8px 0 0 8px;
-  }
-  .nav__menu a {
-    padding: 12px 24px;
-    color: #fff;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: left;
-    text-decoration: none;
-    font-size: 1.1em;
-  }
-  .nav__menu a:hover {
-    background: #333;
+    align-items: flex-start;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.12);
   }
 }
-
-
