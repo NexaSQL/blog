@@ -1429,3 +1429,19 @@ pre code {
   margin-right: 6px;
   margin-top: 6px;
 }
+
+.post-tags {
+  margin-top: 12px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #007a87;
+  color: white;
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
