@@ -1,0 +1,10 @@
+{
+  "title": "5 SQL Server Performance Tuning Techniques That Actually Work",
+  "author": "David Chen",
+  "date": "2024-01-15",
+  "readTime": "8 min read",
+  "category": "Performance",
+  "tags": ["Performance", "Optimization", "Query Tuning"],
+  "excerpt": "Learn the proven methods our ex-Microsoft engineers use to optimize SQL Server performance and reduce query execution times by up to 90%.",
+  "content": "<p>In this full article, we’ll explore five highly effective techniques for SQL Server performance tuning. These are:</p>\n<ol>\n<li>Index Optimization</li>\n<li>Query Refactoring</li>\n<li>Execution Plan Analysis</li>\n<li>Partitioning Strategy</li>\n<li>Resource Governor Configuration</li>\n</ol>\n<p>Each technique includes examples, metrics, and implementation tips for real-world databases. Stay tuned for deeper tutorials on each in future posts.</p>"
+}
