@@ -1462,14 +1462,17 @@ pre code {
 }
 /* --- END NAVIGATION FIXES --- */
 
-
 @media (max-width: 720px) {
-  .nav__toggle {
-    display: flex;
+  .nav__menu {
     position: absolute;
-    top: 16px;
-    right: 20px;
-    z-index: 1000;
+    top: 100%;  /* Just below the hamburger */
+    left: 0;
+    right: 0;
+    width: 100vw;       /* Full browser width */
+    min-width: 0;
+    box-sizing: border-box;
+    background: #222;   /* Or your nav color */
+    z-index: 999;
   }
 }
 
