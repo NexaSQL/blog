@@ -25,6 +25,8 @@ function renderPostCard(post) {
     day: "numeric"
   });
 
+  const tagsHTML = post.tags?.map(tag => `<span class="tag">${tag}</span>`).join(" ") || "";
+
   return `
     <div class="post-card">
       <a class="post-link" href="posts/post.html?slug=${post.slug}">
@@ -34,6 +36,8 @@ function renderPostCard(post) {
         By <strong>${post.author}</strong> | ${dateFormatted} | ${post.readTime}
       </div>
       <p class="post-excerpt">${post.excerpt}</p>
+      ${tagsHTML}
     </div>
   `;
 }
+
