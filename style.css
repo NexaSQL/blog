@@ -1468,7 +1468,7 @@ pre code {
   .nav__menu {
     position: absolute;       /* or fixed, depending on your preference */
     top: 60px;                /* Distance from the top (increase to move down) */
-    right: 200px;              /* Distance from the right edge (increase to move left) */
+    left: 200px;              /* Distance from the right edge (increase to move left) */
     /* Or use left: 20px; to move from the left */
     /* margin-top or margin-left as fine tuners if absolute isn't sufficient */
     width: 160px;             /* Adjust width as needed */
