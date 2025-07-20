@@ -1,0 +1,22 @@
+[
+  {
+    "title": "5 SQL Server Performance Tuning Techniques",
+    "slug": "5-sql-server-performance-tuning-techniques",
+    "excerpt": "Learn proven techniques our engineers use to optimize SQL Server.",
+    "author": "David Chen",
+    "date": "2024-01-15",
+    "readTime": "8 min",
+    "category": "Performance",
+    "featured": true
+  },
+  {
+    "title": "How to Migrate Your Database to Azure SQL",
+    "slug": "migrate-database-to-azure-sql",
+    "excerpt": "Step-by-step guide for migrating to Azure SQL with minimal downtime.",
+    "author": "Anita Rao",
+    "date": "2024-03-01",
+    "readTime": "6 min",
+    "category": "Cloud",
+    "featured": false
+  }
+]
