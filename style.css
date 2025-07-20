@@ -1461,3 +1461,15 @@ pre code {
   }
 }
 /* --- END NAVIGATION FIXES --- */
+
+
+@media (max-width: 720px) {
+  .nav__toggle {
+    display: flex;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    z-index: 1000;
+  }
+}
+
