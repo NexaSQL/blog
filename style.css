@@ -1377,3 +1377,87 @@ pre code {
   color: #757575;
   font-style: italic;
 }
+
+/* --- BEGIN NAVIGATION FIXES --- */
+/* Enhanced Navigation Styles - Mobile Dropdown Fix */
+@media (max-width: 768px) {
+  .nav__list {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-top: none;
+    box-shadow: var(--shadow-md);
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-16) 0;
+    z-index: 1000;
+  }
+
+  /* Open state - drops down vertically */
+  .nav__list.nav--open {
+    display: flex;
+  }
+
+  .nav__item {
+    width: 100%;
+  }
+
+  .nav__link {
+    display: block;
+    padding: var(--space-12) var(--space-16);
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .nav__link:hover {
+    background-color: var(--color-secondary);
+  }
+
+  .nav__link--active {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+  }
+
+  .nav__link--active::after {
+    display: none; /* Remove underline on mobile */
+  }
+
+  /* Hamburger animation */
+  .nav__toggle--active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .nav__toggle--active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__toggle--active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* Make nav relative to contain absolute positioned dropdown */
+  .nav {
+    position: relative;
+  }
+}
+
+/* Desktop - keep original behavior but fix disappearing issue */
+@media (min-width: 769px) {
+  .nav__list {
+    display: flex !important; /* Always visible on desktop */
+    position: static;
+    background: none;
+    border: none;
+    box-shadow: none;
+    flex-direction: row;
+    gap: var(--space-24);
+    padding: 0;
+  }
+
+  .nav__toggle {
+    display: none !important; /* Always hidden on desktop */
+  }
+}
+/* --- END NAVIGATION FIXES --- */
