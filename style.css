@@ -1462,20 +1462,36 @@ pre code {
 }
 /* --- END NAVIGATION FIXES --- */
 
-
 @media (max-width: 720px) {
-  .nav__menu {
-    position: absolute;   /* or fixed, if preferred */
-    top: 56px;            /* or align with your header/nav height */
-    right: auto;          /* REMOVE this if present */
-    left: 0;              /* Start from the far left edge */
-    width: 70vw;          /* Or set a fixed width (e.g., 220px) */
+  .nav__list {
+    /* Make menu overlay the page, not inline */
+    position: absolute;
+    top: 56px;              /* just below header bar, adjust as needed */
+    right: 0;               /* align to right edge (or use left:0 for left) */
+    left: auto;
+    width: 75vw;            /* or fixed width, like 240px */
+    max-width: 320px;       /* optional */
     background: #222;
-    z-index: 1200;
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 0 8px 8px 0;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.12);
+    z-index: 1200;
+    padding: 16px 0;
+    display: none;          /* hide by default */
+    box-shadow: 0 6px 24px rgba(0,0,0,0.14);
+    border-radius: 8px 0 0 8px;
+  }
+  .nav__list.open {
+    display: flex !important;
+  }
+  .nav__item {
+    width: 100%;
+  }
+  .nav__link {
+    width: 100%;
+    padding: 14px 24px;
+    box-sizing: border-box;
+    color: #fff;
+    text-align: left;
   }
 }
+
