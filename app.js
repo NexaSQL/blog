@@ -373,8 +373,9 @@ function initializeNavigation() {
   // Mobile menu toggle
   if (navToggle && navList) {
     navToggle.addEventListener('click', () => {
-      navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
-    });
+  navList.classList.toggle('open');
+});
+
   }
 
   // Smooth scrolling for navigation links
