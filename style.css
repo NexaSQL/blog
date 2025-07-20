@@ -1465,14 +1465,13 @@ pre code {
 @media (max-width: 720px) {
   .nav__menu {
     position: absolute;
-    top: 100%;  /* Just below the hamburger */
-    left: 0;
-    right: 0;
-    width: 100vw;       /* Full browser width */
-    min-width: 0;
-    box-sizing: border-box;
-    background: #222;   /* Or your nav color */
-    z-index: 999;
+    top: 48px;        /* Sits just below the hamburger; adjust as needed */
+    left: 0;          /* Start from the left edge of the parent */
+    width: 200px;     /* Set menu width, or use 60vw/70vw for percentage */
+    background: #222; /* Or match your current nav background */
+    z-index: 999;     /* Stay above other elements */
+    border-radius: 0 8px 8px 0; /* Optional: soft right corners */
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1); /* Optional: subtle shadow */
   }
 }
 
