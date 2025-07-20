@@ -1469,25 +1469,25 @@ pre code {
   .nav__toggle {
     position: absolute;
     top: 16px;
-    right: 20px; /* hamburger stays on the right */
+    left: 20px; /* Hamburger now on the LEFT */
     z-index: 1002;
   }
   .nav__menu {
     position: absolute;
     top: 0;
-    right: 60px;   /* pops up to the left of hamburger menu */
-    width: 200px;  /* set desired menu width */
+    left: 60px;    /* Menu pops out to the RIGHT of the hamburger */
+    width: 200px;  /* Adjust width for your needs */
     background: #222;
     z-index: 1001;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-    border-radius: 8px 0 0 8px;
+    align-items: flex-start;
+    text-align: left;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    border-radius: 0 8px 8px 0;
   }
   .nav__menu a {
-    padding: 16px 24px 16px 0;
-    margin-right: 0;
+    padding: 16px 0 16px 24px;
+    margin-left: 0;
   }
 }
