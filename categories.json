@@ -1,0 +1,22 @@
+[
+  {
+    "title": "SQL Server Performance",
+    "description": "Performance tuning, query optimization, and system monitoring",
+    "count": 25
+  },
+  {
+    "title": "Database Administration",
+    "description": "DBA best practices, maintenance, and troubleshooting",
+    "count": 18
+  },
+  {
+    "title": "Cloud Migration",
+    "description": "Azure SQL, AWS RDS, and hybrid cloud strategies",
+    "count": 12
+  },
+  {
+    "title": "Security & Compliance",
+    "description": "Database security, encryption, and compliance frameworks",
+    "count": 10
+  }
+]
