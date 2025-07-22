@@ -12,6 +12,19 @@
     "Cloud"
   ],
   "featured": true,
+  "coverImage": "https://www.nexasql.com/assets/images/blog/azure-sql-migration.jpg",
+  "meta": {
+    "title": "Migrating to Azure SQL – 500+ Success Stories | NexaSQL",
+    "description": "Learn how NexaSQL successfully migrated over 500 databases to Azure SQL. Discover the key lessons, strategies, and best practices.",
+    "keywords": ["Azure SQL migration", "SQL Server to cloud", "NexaSQL", "Database cloud migration"]
+  },
+  "cta": {
+    "text": "Need expert help with your Azure SQL migration?",
+    "button": {
+      "label": "Talk to an Expert",
+      "link": "https://www.nexasql.com/contact"
+    }
+  },
   "content": [
     {
       "heading": "Introduction",
@@ -53,5 +66,5 @@
       "heading": "Need Help?",
       "body": "NexaSQL offers specialized Azure SQL migration services backed by ex-Microsoft engineers. From assessment to post-migration support, we ensure your transition to the cloud is seamless and successful."
     }
- ]
+  ]
 }
