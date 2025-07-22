@@ -12,5 +12,46 @@
     "Cloud"
   ],
   "featured": true,
-  "content": "This is where the full article content would go..."
+  "content": [
+    {
+      "heading": "Introduction",
+      "body": "As businesses embrace digital transformation, migrating databases to the cloud has become a critical priority. At NexaSQL, we’ve successfully executed over 500 migrations to Azure SQL for clients across industries. This article shares hard-earned lessons, key strategies, and actionable insights that can guide your Azure SQL migration journey."
+    },
+    {
+      "heading": "Why Azure SQL?",
+      "body": "Azure SQL offers high availability, scalability, security, and seamless integration with Microsoft’s cloud ecosystem. Whether you're using SQL Server on-prem or other databases, migrating to Azure SQL can reduce operational overhead while enabling faster innovation."
+    },
+    {
+      "heading": "Lesson 1: Assessment is Everything",
+      "body": "Every successful migration begins with a thorough assessment. We use tools like Azure Data Migration Assistant (DMA) and SQL Assessment API to evaluate compatibility, performance risks, and modernization opportunities. This step helps avoid surprises during later stages."
+    },
+    {
+      "heading": "Lesson 2: Choose the Right Deployment Model",
+      "body": "Azure offers various deployment models—Azure SQL Database, Managed Instance, and SQL Server on Azure VM. Selecting the right one depends on factors such as feature compatibility, control level, and licensing. For example, legacy apps with SQL Agent dependencies may be better suited for Managed Instance."
+    },
+    {
+      "heading": "Lesson 3: Performance Tuning is Not Optional",
+      "body": "After migration, workloads may behave differently in the cloud. Query performance, indexing, and execution plans must be revisited. We’ve seen significant gains by leveraging Intelligent Performance features like Query Store, Automatic Tuning, and Elastic Pools."
+    },
+    {
+      "heading": "Lesson 4: Downtime Planning is Crucial",
+      "body": "Migrations often require scheduled downtime. To minimize impact, we recommend using a phased approach—starting with dev/test environments, then staging, and finally production. Tools like Azure Database Migration Service (DMS) allow for near-zero downtime migrations."
+    },
+    {
+      "heading": "Lesson 5: Security & Compliance Must Be Front and Center",
+      "body": "Security cannot be an afterthought. Implement features such as Transparent Data Encryption (TDE), Azure Active Directory (AAD) integration, Virtual Network (VNet) rules, and auditing. Compliance with GDPR, HIPAA, or other regulations should also be reviewed during planning."
+    },
+    {
+      "heading": "Common Pitfalls to Avoid",
+      "body": "- Skipping the assessment phase\n- Misjudging downtime or performance impact\n- Using lift-and-shift without optimization\n- Ignoring network and identity architecture\n- Underestimating the learning curve for teams"
+    },
+    {
+      "heading": "Final Thoughts",
+      "body": "Migrating to Azure SQL is not just a technical task—it’s a strategic move. With the right preparation, tools, and guidance, the migration can unlock massive value for your organization. Our experience from 500+ migrations proves that the payoff is worth the effort."
+    },
+    {
+      "heading": "Need Help?",
+      "body": "NexaSQL offers specialized Azure SQL migration services backed by ex-Microsoft engineers. From assessment to post-migration support, we ensure your transition to the cloud is seamless and successful."
+    }
+ ]
 }
