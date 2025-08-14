@@ -1505,3 +1505,14 @@ pre code {
     border: 1px solid var(--color-card-border);
 }
 
+/* Ensure padding inside cards so text isn't against the border */
+.post-card {
+  padding: var(--space-20);
+  box-sizing: border-box;
+}
+
+.post-card__header,
+.post-card__footer {
+  padding: 0; /* Avoid double padding if .post-card now has padding */
+}
+
