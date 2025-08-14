@@ -1,5 +1,5 @@
 {
-  "posts": ["sql-performance-post","post_template","sql-server-performance-tuning-techniques",
+  "posts": ["sql-performance-mistakes-that-kill-database-speed","post_template","sql-server-performance-tuning-techniques",
     "sql-server-index-optimization-guide", 
     "azure-sql-migration-lessons",
     "database-security-best-practices-2024",
