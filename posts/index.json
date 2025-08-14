@@ -1,5 +1,6 @@
 {
-  "posts": ["sql-performance-mistakes-that-kill-database-speed","post_template","test-post","ansi-padding-and-storage-sql-in-sixty-seconds-210"
+  "posts": ["sql-performance-mistakes-that-kill-database-speed","post_template","test-post","ansi-padding-and-storage-sql-in-sixty-seconds-210",
+    "why-max-server-memory-isnt-always-the-limit"
      
   ]
 }
