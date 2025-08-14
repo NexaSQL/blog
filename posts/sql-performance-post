@@ -13,7 +13,7 @@
     <meta name="post:readTime" content="6 min read">
     <meta name="post:category" content="Performance">
     <meta name="post:tags" content="Performance,SQL Optimization,Database Tuning,Best Practices">
-    <meta name="post:featured" content="false">
+    <meta name="post:featured" content="true">
     
     <!-- SEO Meta Tags -->
     <title>7 SQL Performance Mistakes That Kill Your Database Speed - NexaSQL Blog</title>
