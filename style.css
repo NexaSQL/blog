@@ -1494,4 +1494,14 @@ pre code {
     text-align: left;
   }
 }
+.blog-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 24px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(19,52,59,0.09);
+    background: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+}
 
