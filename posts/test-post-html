@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Post Metadata -->
+    <meta name="post:title" content="Test Post - Is My Blog Working?">
+    <meta name="post:slug" content="test-post">
+    <meta name="post:excerpt" content="A simple test post to verify that the HTML post system is working correctly.">
+    <meta name="post:author" content="NexaSQL Team">
+    <meta name="post:date" content="2024-08-14">
+    <meta name="post:readTime" content="2 min read">
+    <meta name="post:category" content="Performance">
+    <meta name="post:tags" content="Test,Setup">
+    <meta name="post:featured" content="true">
+    
+    <!-- SEO Meta Tags -->
+    <title>Test Post - Is My Blog Working? - NexaSQL Blog</title>
+    <meta name="description" content="A simple test post to verify that the HTML post system is working correctly.">
+</head>
+<body>
+    <h2>🎉 Success! Your Blog is Working</h2>
+    <p>If you can see this page, congratulations! Your HTML post system is working perfectly.</p>
+    
+    <h3>What This Means</h3>
+    <ul>
+        <li>✅ Your app.js is correctly loading HTML posts</li>
+        <li>✅ Your posts/index.json is properly configured</li>
+        <li>✅ The HTML post format is working</li>
+        <li>✅ You can now create more posts easily!</li>
+    </ul>
+    
+    <h3>Next Steps</h3>
+    <p>Now that the system is working, you can:</p>
+    <ol>
+        <li>Create more HTML posts using the <code>_template.html</code></li>
+        <li>Add their slugs to <code>posts/index.json</code></li>
+        <li>Deploy to GitHub Pages</li>
+    </ol>
+    
+    <blockquote>
+        <strong>Pro Tip:</strong> You can delete this test post once you've confirmed everything is working!
+    </blockquote>
+    
+    <p><strong>Ready to create amazing content?</strong> <a href="https://nexasql.com/Contact.html#form03-e">Contact NexaSQL</a> for expert SQL Server insights.</p>
+</body>
+</html>
