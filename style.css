@@ -1507,7 +1507,7 @@ pre code {
 
 /* Ensure padding inside cards so text isn't against the border */
 .post-card {
-  padding: var(--space-20);
+  padding: var(--space-24);
   box-sizing: border-box;
 }
 
