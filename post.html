@@ -8,43 +8,36 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="back-link">← Back to Articles</a>
-  </header>
+<header>
+  <a href="index.html" class="back-link">← Back to Articles</a>
+</header>
 
-  <main class="post-container">
+<main class="post-container">
+  <!-- Loading State -->
+  <div id="loadingMessage">
+    <p>Loading article...</p>
+    <p>Please wait while we fetch the content.</p>
+  </div>
 
-    <!-- Loading State -->
-    <div id="loadingMessage">
-      <p>Loading article...</p>
-      <p>Please wait while we fetch the content.</p>
-    </div>
+  <!-- Error State -->
+  <div id="postError" style="display:none;">
+    <h2>Article Not Found</h2>
+    <p>Sorry, we couldn't find the article you're looking for.</p>
+    <p><a href="index.html">Back to Home</a></p>
+  </div>
 
-    <!-- Error State -->
-    <div id="postError" style="display:none;">
-      <h2>Article Not Found</h2>
-      <p>Sorry, we couldn't find the article you're looking for.</p>
-      <p><a href="index.html">Back to Home</a></p>
-    </div>
+  <!-- Article -->
+  <article id="articleWrapper" style="display:none;">
+    <h1 id="postTitle"></h1>
+    <div id="postMeta" class="post-meta"></div>
+    <div id="postContent"></div>
+  </article>
+</main>
 
-    <!-- Article Content -->
-    <article id="articleWrapper" style="display:none;">
-      <h1 id="postTitle">Article Title</h1>
-      <div id="postMeta" class="post-meta">
-        <span id="postAuthor"></span> • 
-        <span id="postDate"></span> • 
-        <span id="postReadTime"></span> • 
-        <span id="postCategory"></span>
-      </div>
-      <div id="postContent"></div>
-    </article>
+<footer>
+  <p>&copy; NexaSQL</p>
+</footer>
 
-  </main>
-
-  <footer>
-    <p>← Back to Articles</p>
-  </footer>
-
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
