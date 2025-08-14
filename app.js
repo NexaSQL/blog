@@ -15,7 +15,7 @@ const blogData = {
             "24/7 Support"
         ]
     },
-    blogPosts: [], // loaded dynamically from HTML files
+    blogPosts: [],
     categories: [
         { name: "SQL Server Performance", description: "Performance tuning, query optimization, and system monitoring", count: 25 },
         { name: "Database Administration", description: "DBA best practices, maintenance, and troubleshooting", count: 18 },
@@ -41,7 +41,6 @@ function createSlug(title) {
         .trim();
 }
 
-// Parse HTML post and extract metadata & content
 function parseHTMLPost(htmlContent, filename) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlContent, 'text/html');
@@ -57,19 +56,17 @@ function parseHTMLPost(htmlContent, filename) {
     const tagsString = getMetaContent('tags');
     const tags = tagsString ? tagsString.split(',').map(t => t.trim()) : [];
 
-    const bodyContent = doc.body ? doc.body.innerHTML : '';
-
     return {
         title: getMetaContent('title') || 'Untitled Post',
-        slug: slug,
+        slug,
         excerpt: getMetaContent('excerpt') || '',
         author: getMetaContent('author') || 'Unknown Author',
         date: getMetaContent('date') || new Date().toISOString().split('T')[0],
         readTime: getMetaContent('readTime') || '5 min read',
         category: getMetaContent('category') || 'General',
         tags: tags,
-        featured: getMetaContent('featured').toLowerCase() === 'true',
-        content: bodyContent
+        featured: (getMetaContent('featured') || '').toLowerCase() === 'true',
+        content: doc.body ? doc.body.innerHTML : ''
     };
 }
 
@@ -89,7 +86,7 @@ function createPostCard(post, featured = false) {
             <h2><a href="post.html?slug=${postSlug}">${post.title}</a></h2>
             <p class="post-card__meta">${formatDate(post.date)} • ${post.readTime}</p>
             <p class="post-card__excerpt">${post.excerpt}</p>
-            <p class="post-card__tags">${post.tags.map(tag => `<span>${tag}</span>`).join('')}</p>
+            <p class="post-card__tags">${post.tags.map(tag => `<span>${tag}</span>`).join(' ')}</p>
         </div>
     `;
     return postCard;
@@ -117,7 +114,7 @@ async function discoverPosts() {
             return index.posts || [];
         }
     } catch (err) {
-        console.warn('No posts/index.json found, using fallback list');
+        console.warn('Error loading index.json', err);
     }
     return [];
 }
@@ -140,6 +137,7 @@ async function loadPosts() {
             console.error(`Error loading post ${slug}:`, err);
         }
     }
+
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
     blogData.blogPosts = posts;
     return posts;
@@ -189,13 +187,9 @@ function populateCategories() {
 }
 
 function showArticleNotFound() {
-    const titleEl = document.getElementById('postTitle');
-    const metaEl = document.getElementById('postMeta');
-    const contentEl = document.getElementById('postContent');
-    if (titleEl) titleEl.textContent = "Article Not Found";
-    if (metaEl) metaEl.textContent = "";
-    if (contentEl) contentEl.innerHTML = `<p>Sorry, we couldn't find the article you're looking for.</p>
-    <p><a href="index.html">Back to Home</a></p>`;
+    document.getElementById('loadingMessage').style.display = 'none';
+    document.getElementById('articleWrapper').style.display = 'none';
+    document.getElementById('postError').style.display = 'block';
 }
 
 // --------------------
@@ -231,7 +225,6 @@ function displaySearchResults(posts, query) {
     if (!featuredContainer || !recentContainer) return;
     featuredContainer.innerHTML = '';
     recentContainer.innerHTML = '';
-
     if (posts.length === 0) {
         featuredContainer.innerHTML = `<p>No articles found for "${query}".</p>`;
         return;
@@ -246,24 +239,24 @@ function displaySearchResults(posts, query) {
 // --------------------
 document.addEventListener('DOMContentLoaded', async () => {
     const isPostPage = window.location.pathname.endsWith('post.html');
+
     if (isPostPage) {
-        const params = new URLSearchParams(window.location.search);
-        const slug = params.get('slug');
-        if (!slug) {
-            showArticleNotFound();
-            return;
-        }
+        const slug = new URLSearchParams(window.location.search).get('slug');
+        if (!slug) { showArticleNotFound(); return; }
+
         const post = await loadSinglePost(slug);
-        if (!post) {
-            showArticleNotFound();
-            return;
-        }
-        // Inject into DOM
-        if (document.getElementById('postTitle')) document.getElementById('postTitle').textContent = post.title;
-        if (document.getElementById('postMeta')) document.getElementById('postMeta').textContent =
+        if (!post) { showArticleNotFound(); return; }
+
+        document.getElementById('postTitle').textContent = post.title;
+        document.getElementById('postMeta').textContent =
             `${formatDate(post.date)} • ${post.readTime} • By ${post.author}`;
-        if (document.getElementById('postContent')) document.getElementById('postContent').innerHTML = post.content;
+        document.getElementById('postContent').innerHTML = post.content;
         document.title = `${post.title} - NexaSQL Blog`;
+
+        // Toggle visibility
+        document.getElementById('loadingMessage').style.display = 'none';
+        document.getElementById('postError').style.display = 'none';
+        document.getElementById('articleWrapper').style.display = 'block';
     } else {
         await loadPosts();
         populateFeaturedPosts();
